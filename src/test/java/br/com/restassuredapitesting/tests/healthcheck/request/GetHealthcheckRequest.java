@@ -1,4 +1,4 @@
-package br.com.restassuredapitesting.tests.ping.request;
+package br.com.restassuredapitesting.tests.healthcheck.request;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;

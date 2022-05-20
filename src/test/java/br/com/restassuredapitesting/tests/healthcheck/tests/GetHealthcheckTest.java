@@ -1,8 +1,8 @@
-package br.com.restassuredapitesting.tests.ping.tests;
+package br.com.restassuredapitesting.tests.healthcheck.tests;
 
 import br.com.restassuredapitesting.base.BaseTest;
 import br.com.restassuredapitesting.suites.AllTests;
-import br.com.restassuredapitesting.tests.ping.request.GetPingRequest;
+import br.com.restassuredapitesting.tests.healthcheck.request.GetPingRequest;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -22,13 +22,25 @@ public class GetPingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class})
-    @DisplayName("Verificar se a API está Online")
+    @DisplayName("Check if the api is online - max 3ms")
+    public void healthCheck() {
+        getPingRequest.pingReturnApi()
+                .then()
+                .statusCode(201);
+    }
+
+    @Test
+    @Severity(SeverityLevel.BLOCKER)
+    @Category({AllTests.class})
+    @DisplayName("Check if the api is online - max 3ms")
     public void healthCheckWithinThreeSeconds(){
         getPingRequest.pingReturnApi()
                 .then()
                 .statusCode(201)
                 .time(lessThan(3L), TimeUnit.SECONDS);
     }
+
+
 
 
 
