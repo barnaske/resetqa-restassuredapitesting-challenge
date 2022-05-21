@@ -5,9 +5,9 @@ import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
-public class GetPingRequest{
+public class GetHealthcheckRequest {
 
-    @Step("Retorno a ping da API")
+    @Step("Return API's ping")
     public Response pingReturnApi(){
         return given()
                 .header("Content-Type", "appplication/json")

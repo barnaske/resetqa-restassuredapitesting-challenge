@@ -11,7 +11,7 @@ public class PostAuthRequest {
 
     AuthPayloads authPayload = new AuthPayloads();
 
-    @Step("Retorna o token")
+    @Step("Return user token")
     public Response returnToken(){
 
         return given()
@@ -20,7 +20,7 @@ public class PostAuthRequest {
                 .body(authPayload.jsonAuthLogin().toString())
                 .post("auth");
     }
-    @Step("Busca o token")
+    @Step("Get user token")
     public String getToken(){
         return "token="+this.returnToken()
                 .then()

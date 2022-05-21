@@ -11,7 +11,7 @@ public class PutBookingRequest {
 
     BookingPayloads bookingPayloads = new BookingPayloads();
 
-    @Step("Altera reserva especifica com token")
+    @Step("Update an specific booking with a token")
     public Response updateBookingWithToken(int id, String token){
         return given()
                 .header("Content-Type", "application/json")

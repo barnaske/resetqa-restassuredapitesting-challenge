@@ -2,7 +2,7 @@ package br.com.restassuredapitesting.tests.healthcheck.tests;
 
 import br.com.restassuredapitesting.base.BaseTest;
 import br.com.restassuredapitesting.suites.AllTests;
-import br.com.restassuredapitesting.tests.healthcheck.request.GetPingRequest;
+import br.com.restassuredapitesting.tests.healthcheck.request.GetHealthcheckRequest;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -15,14 +15,14 @@ import java.util.concurrent.TimeUnit;
 import static org.hamcrest.Matchers.lessThan;
 
 @Feature("Healthcheck Feature")
-public class GetPingTest extends BaseTest {
+public class GetHealthcheckTest extends BaseTest {
 
-    GetPingRequest getPingRequest = new GetPingRequest();
+    GetHealthcheckRequest getPingRequest = new GetHealthcheckRequest();
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class})
-    @DisplayName("Check if the api is online - max 3ms")
+    @DisplayName("Check if the api is online")
     public void healthCheck() {
         getPingRequest.pingReturnApi()
                 .then()
@@ -39,9 +39,4 @@ public class GetPingTest extends BaseTest {
                 .statusCode(201)
                 .time(lessThan(3L), TimeUnit.SECONDS);
     }
-
-
-
-
-
 }

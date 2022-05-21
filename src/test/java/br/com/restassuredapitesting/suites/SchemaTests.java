@@ -1,2 +1,4 @@
-package br.com.restassuredapitesting.suites;public interface SchemaTests {
+package br.com.restassuredapitesting.suites;
+
+public interface SchemaTests {
 }
