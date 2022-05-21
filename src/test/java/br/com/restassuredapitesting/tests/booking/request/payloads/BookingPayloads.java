@@ -46,4 +46,31 @@ public class BookingPayloads {
         return payloadListBookingById;
     }
 
+    public static JSONObject payloadToFilterByCheckInOut(){
+        JSONObject payloadToFilterByCheckInOut = new JSONObject();
+        payloadToFilterByCheckInOut.put("firstname", "Joana");
+        payloadToFilterByCheckInOut.put("lastname","Pravariar");
+        payloadToFilterByCheckInOut.put("totalprice",111);
+        payloadToFilterByCheckInOut.put("depositpaid", true);
+        JSONObject objectBookingDates = new JSONObject();
+        objectBookingDates.put("checkin", "2022-05-20");
+        objectBookingDates.put("checkout", "2022-05-21");
+        payloadToFilterByCheckInOut.put("bookingdates", objectBookingDates);
+        payloadToFilterByCheckInOut.put("additionalneeds","Breakfast");
+        return payloadToFilterByCheckInOut;
+    }
+
+    public static JSONObject payloadUpdateBookingData(){
+        JSONObject payloadUpdateBookingData = new JSONObject();
+        payloadUpdateBookingData.put("firstname", "Updating");
+        payloadUpdateBookingData.put("lastname","All");
+        payloadUpdateBookingData.put("totalprice",111);
+        payloadUpdateBookingData.put("depositpaid", true);
+        JSONObject objectBookingDates = new JSONObject();
+        objectBookingDates.put("checkin", "2018-01-01");
+        objectBookingDates.put("checkout", "2019-01-01");
+        payloadUpdateBookingData.put("bookingdates", objectBookingDates);
+        payloadUpdateBookingData.put("additionalneeds","Data from the booking");
+        return payloadUpdateBookingData;
+    }
 }

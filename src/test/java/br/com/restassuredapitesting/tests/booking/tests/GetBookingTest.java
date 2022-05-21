@@ -92,6 +92,25 @@ public class GetBookingTest extends BaseTest {
                 .statusCode(200)
                 .body("size()", greaterThan(0));
     }
+
+    @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Category({AllTests.class, AcceptanceCriticalTests.class})
+    @DisplayName("List Booking IDs filtering by Checkin")
+    public void checkListBookingIdsFilteringByCheckin(){
+        JSONObject payload = bookingPayloads.payloadToFilterByCheckInOut();
+
+        postBookingRequest.createBooking(payload)
+                .then()
+                .log().all()
+                .statusCode(200);
+
+        getBookingRequest.listWithOneFilter("checkin", "2022-05-20")
+                .then()
+                .log().all()
+                .statusCode(200)
+                .body("size()", greaterThan(0));
+    }
 //--------------------------------- Schema Validations -------------------------------------
     @Test
     @Severity(SeverityLevel.BLOCKER)

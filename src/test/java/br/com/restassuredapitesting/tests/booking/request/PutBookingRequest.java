@@ -18,7 +18,19 @@ public class PutBookingRequest {
                 .header("Accept", "application/json")
                 .header("Cookie", token)
                 .when()
-                .body(bookingPayloads.payloadValidBooking().toString())
+                .body(bookingPayloads.payloadUpdateBookingData().toString())
                 .put("booking/"+ id);
+    }
+
+    @Step("Update an specific booking with basic auth")
+    public Response updateBookingWithBasicAuth(int id){
+        return given()
+                .header("Content-Type", "application/json")
+                .header("Accept", "application/json")
+                .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQxMjM=")
+                .when()
+                .body(bookingPayloads.payloadUpdateBookingData().toString())
+                .put("booking/"+id);
+
     }
 }
