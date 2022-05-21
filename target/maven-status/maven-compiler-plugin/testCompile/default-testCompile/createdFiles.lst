@@ -10,6 +10,7 @@ br\com\restassuredapitesting\tests\booking\request\payloads\BookingPayloads.clas
 br\com\restassuredapitesting\tests\booking\request\PostBookingRequest.class
 br\com\restassuredapitesting\suites\AllTests.class
 br\com\restassuredapitesting\suites\SchemaTests.class
+br\com\restassuredapitesting\runners\AcceptanceCriticalTests.class
 br\com\restassuredapitesting\suites\Healthcheck.class
 br\com\restassuredapitesting\utils\Utils.class
 br\com\restassuredapitesting\suites\SmokeTests.class
@@ -17,9 +18,8 @@ br\com\restassuredapitesting\tests\healthcheck\tests\GetHealthcheckTest.class
 br\com\restassuredapitesting\tests\booking\tests\PutBookingTest.class
 br\com\restassuredapitesting\tests\healthcheck\request\GetHealthcheckRequest.class
 br\com\restassuredapitesting\tests\booking\request\GetBookingRequest.class
+br\com\restassuredapitesting\suites\AcceptanceCriticalTests.class
 br\com\restassuredapitesting\runners\SmokeTests.class
-br\com\restassuredapitesting\runners\AcceptanceTests.class
 br\com\restassuredapitesting\base\BaseTest.class
 br\com\restassuredapitesting\runners\SchemaTests.class
-br\com\restassuredapitesting\suites\AcceptanceTests.class
 br\com\restassuredapitesting\runners\SecurityTests.class

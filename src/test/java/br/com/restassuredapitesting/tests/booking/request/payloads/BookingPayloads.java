@@ -32,4 +32,18 @@ public class BookingPayloads {
         return payloadCreatingBookingToValidateSchema;
     }
 
+    public static JSONObject payloadListBookingById(){
+        JSONObject payloadListBookingById = new JSONObject();
+        payloadListBookingById.put("firstname", "Joana");
+        payloadListBookingById.put("lastname","Brown");
+        payloadListBookingById.put("totalprice",111);
+        payloadListBookingById.put("depositpaid", true);
+        JSONObject objectBookingDates = new JSONObject();
+        objectBookingDates.put("checkin", "2018-01-01");
+        objectBookingDates.put("checkout", "2019-01-01");
+        payloadListBookingById.put("bookingdates", objectBookingDates);
+        payloadListBookingById.put("additionalneeds","Breakfast");
+        return payloadListBookingById;
+    }
+
 }
