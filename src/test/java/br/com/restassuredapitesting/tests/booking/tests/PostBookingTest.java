@@ -1,6 +1,7 @@
 package br.com.restassuredapitesting.tests.booking.tests;
 
 import br.com.restassuredapitesting.base.BaseTest;
+import br.com.restassuredapitesting.suites.AcceptanceCriticalTests;
 import br.com.restassuredapitesting.suites.AllTests;
 import br.com.restassuredapitesting.suites.SchemaTests;
 import br.com.restassuredapitesting.tests.booking.request.PostBookingRequest;
@@ -18,7 +19,7 @@ public class PostBookingTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Category({AllTests.class, SchemaTests.class})
+    @Category({AllTests.class, SchemaTests.class, AcceptanceCriticalTests.class})
     @DisplayName("Creating a new booking")
     public void createBooking(){
         String bookingId = "";

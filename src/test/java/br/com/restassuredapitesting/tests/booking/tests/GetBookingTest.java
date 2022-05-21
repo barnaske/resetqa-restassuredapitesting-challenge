@@ -1,6 +1,7 @@
 package br.com.restassuredapitesting.tests.booking.tests;
 
 import br.com.restassuredapitesting.base.BaseTest;
+import br.com.restassuredapitesting.suites.AcceptanceCriticalTests;
 import br.com.restassuredapitesting.suites.AllTests;
 import br.com.restassuredapitesting.suites.SchemaTests;
 import br.com.restassuredapitesting.tests.booking.request.GetBookingRequest;
@@ -27,13 +28,21 @@ public class GetBookingTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @Category({AllTests.class})
-    @DisplayName("List bookings by ID")
+    @Category({AllTests.class, AcceptanceCriticalTests.class})
+    @DisplayName("List all bookings by ID")
     public void checkListAllBookingsById(){
         getBookingRequest.allBookings()
                 .then()
                 .statusCode(200)
                 .body("size()", greaterThan(0));
+    }
+
+    @Test
+    @Severity(SeverityLevel.BLOCKER)
+    @Category({AllTests.class, AcceptanceCriticalTests.class})
+    @DisplayName("List a specific booking by ID")
+    public void listBookingById(){
+        
     }
 
     @Test
