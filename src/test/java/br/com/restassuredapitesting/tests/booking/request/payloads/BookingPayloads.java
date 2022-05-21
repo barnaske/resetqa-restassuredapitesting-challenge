@@ -7,7 +7,7 @@ public class BookingPayloads {
     public static JSONObject payloadValidBooking(){
         JSONObject payloadValidBooking = new JSONObject();
         payloadValidBooking.put("firstname", "Joana");
-        payloadValidBooking.put("lastname","Brown");
+        payloadValidBooking.put("lastname","Pravariar");
         payloadValidBooking.put("totalprice",111);
         payloadValidBooking.put("depositpaid", true);
         JSONObject objectBookingDates = new JSONObject();

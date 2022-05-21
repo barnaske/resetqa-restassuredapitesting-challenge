@@ -60,6 +60,40 @@ public class GetBookingTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Category({AllTests.class, AcceptanceCriticalTests.class})
+    @DisplayName("List Booking IDs filtering by firstname")
+    public void checkListBookingIdsFilteringByFisrtname(){
+        JSONObject payload = bookingPayloads.payloadValidBooking();
+
+        postBookingRequest.createBooking(payload)
+                .then()
+                .statusCode(200);
+
+        getBookingRequest.listWithOneFilter("firstname", "Joana")
+                .then()
+                .statusCode(200)
+                .body("size()", greaterThan(0));
+    }
+
+    @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Category({AllTests.class, AcceptanceCriticalTests.class})
+    @DisplayName("List Booking IDs filtering by Lastname")
+    public void checkListBookingIdsFilteringByLastname(){
+        JSONObject payload = bookingPayloads.payloadValidBooking();
+
+        postBookingRequest.createBooking(payload)
+                .then()
+                .statusCode(200);
+
+        getBookingRequest.listWithOneFilter("lastname", "Pravariar")
+                .then()
+                .statusCode(200)
+                .body("size()", greaterThan(0));
+    }
+//--------------------------------- Schema Validations -------------------------------------
+    @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({SchemaTests.class, AllTests.class})
     @DisplayName("Validate Booking list's schema")

@@ -20,4 +20,12 @@ public class GetBookingRequest {
                 .when()
                 .get("booking/"+id);
     }
+
+    @Step("List with one filter")
+    public Response listWithOneFilter(String param1, String value1){
+        return given()
+                .when()
+                .queryParam(param1, value1)
+                .get("booking");
+    }
 }
