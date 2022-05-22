@@ -57,4 +57,22 @@ public class DeleteBookingTest extends BaseTest {
                 .then()
                 .statusCode(405);
     }
+
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Category({AllTests.class, AcceptanceExceptionTests.class})
+    @DisplayName("Deleting a booking without auth")
+    public void deleteBookingWithoutAuth(){
+        JSONObject payload = bookingPayloads.payloadValidBooking();
+
+        int bookingToDeleteId = postBookingRequest.createBooking(payload)
+                .then()
+                .statusCode(200)
+                .extract()
+                .path("bookingid");
+
+        deleteBookingRequest.deleteBookingWithoutAuth(bookingToDeleteId)
+                .then()
+                .statusCode(403);
+    }
 }

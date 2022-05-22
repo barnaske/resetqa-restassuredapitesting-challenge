@@ -16,4 +16,12 @@ public class DeleteBookingRequest {
                 .delete("booking/"+id);
     }
 
+    @Step("Deleting a booking without auth")
+    public Response deleteBookingWithoutAuth(int id){
+        return given()
+                .header("Content-Type","application/json")
+                .when()
+                .delete("booking/"+id);
+    }
+
 }

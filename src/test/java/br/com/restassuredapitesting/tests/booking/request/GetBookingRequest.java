@@ -38,4 +38,23 @@ public class GetBookingRequest {
                 .queryParam(param1, value1)
                 .get("booking");
     }
+
+    @Step("List with two filter")
+    public Response listWithTwoFilters(String param1, String value1, String param2, String value2){
+        return given()
+                .when()
+                .queryParam(param1, value1)
+                .queryParam(param2, value2)
+                .get("booking");
+    }
+
+    @Step("List with two filter")
+    public Response listWithThreeFilters(String param1, String value1, String param2, String value2, String param3, String value3){
+        return given()
+                .when()
+                .queryParam(param1, value1)
+                .queryParam(param2, value2)
+                .queryParam(param3, value3)
+                .get("booking");
+    }
 }

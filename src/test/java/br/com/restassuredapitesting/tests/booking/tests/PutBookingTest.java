@@ -3,6 +3,7 @@ package br.com.restassuredapitesting.tests.booking.tests;
 import br.com.restassuredapitesting.base.BaseTest;
 import br.com.restassuredapitesting.suites.AcceptanceCriticalTests;
 import br.com.restassuredapitesting.suites.AllTests;
+import br.com.restassuredapitesting.suites.SecurityTests;
 import br.com.restassuredapitesting.tests.auth.request.PostAuthRequest;
 import br.com.restassuredapitesting.tests.booking.request.GetBookingRequest;
 import br.com.restassuredapitesting.tests.booking.request.PostBookingRequest;
@@ -64,5 +65,62 @@ public class PutBookingTest extends BaseTest {
                 .then()
                 .statusCode(200)
                 .body("size()", greaterThan(0));
+    }
+
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Category({AcceptanceCriticalTests.class, AllTests.class})
+    @DisplayName("Update a booking that does not exists")
+    public void updateNonExistingBooking(){
+
+        int randomId = 1000000 + (int) (Math.random()*9000001);
+
+        String token = postAuthRequest.getToken();
+
+        putBookingRequest.updateBookingWithToken(randomId, token)
+                .then()
+                .log().all()
+                .statusCode(405);
+    }
+
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Category({SecurityTests.class, AllTests.class})
+    @DisplayName("Update booking without sending token")
+    public void updateBookingWithoutToken(){
+
+        JSONObject payload = bookingPayloads.payloadValidBooking();
+
+        int updatingThisBookingById = postBookingRequest.createBooking(payload)
+                .then()
+                .statusCode(200)
+                .extract()
+                .path("bookingid");
+
+        putBookingRequest.updateBookingWithoutToken(updatingThisBookingById)
+                .then()
+                .statusCode(403);
+    }
+
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Category({SecurityTests.class, AllTests.class})
+    @DisplayName("Update booking sending an invalid token")
+    public void updateBookingWithInvalidToken(){
+
+        JSONObject payload = bookingPayloads.payloadValidBooking();
+
+        int updatingThisBookingById = postBookingRequest.createBooking(payload)
+                .then()
+                .statusCode(200)
+                .extract()
+                .path("bookingid");
+
+        String token = "making this surely invalid";
+
+        putBookingRequest.updateBookingWithToken(updatingThisBookingById, token)
+                .then()
+                .log().all()
+                .statusCode(403);
     }
 }

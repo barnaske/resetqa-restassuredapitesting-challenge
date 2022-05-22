@@ -31,6 +31,14 @@ public class PutBookingRequest {
                 .when()
                 .body(bookingPayloads.payloadUpdateBookingData().toString())
                 .put("booking/"+id);
+    }
 
+    public Response updateBookingWithoutToken(int id){
+        return given()
+                .header("Content-Type", "application/json")
+                .header("Accept", "application/json")
+                .when()
+                .body(bookingPayloads.payloadUpdateBookingData().toString())
+                .put("booking/"+ id);
     }
 }

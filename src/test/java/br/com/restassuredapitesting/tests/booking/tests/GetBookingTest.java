@@ -125,18 +125,50 @@ public class GetBookingTest extends BaseTest {
     @Category({AllTests.class, AcceptanceCriticalTests.class})
     @DisplayName("List Booking IDs filtering by Checkin")
     public void checkListBookingIdsFilteringByCheckin(){
-        JSONObject payload = bookingPayloads.payloadToFilterByCheckInOut();
-
-        postBookingRequest.createBooking(payload)
+        String checkinDate = "2022-05-20";
+        getBookingRequest.listWithOneFilter("checkin", checkinDate)
                 .then()
                 .log().all()
                 .statusCode(200);
+    }
 
-        getBookingRequest.listWithOneFilter("checkin", "2022-05-20")
+    @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Category({AllTests.class, AcceptanceCriticalTests.class})
+    @DisplayName("List Booking IDs filtering by Checkout")
+    public void checkListBookingIdsFilteringByCheckout(){
+        String checkoutDate = "2022-05-22";
+        getBookingRequest.listWithOneFilter("checkin", checkoutDate)
                 .then()
                 .log().all()
-                .statusCode(200)
-                .body("bookingdates.checkin", equalTo("2022-05-20"));
+                .statusCode(200);
+    }
+
+    @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Category({AllTests.class, AcceptanceCriticalTests.class})
+    @DisplayName("List Booking IDs filtering by Checkin and Checkout")
+    public void checkListBookingIdsFilteringByCheckinAndCheckout(){
+        String checkinDate = "2022-05-20";
+        String checkoutDate = "2022-05-22";
+        getBookingRequest.listWithTwoFilters("checkin", checkinDate, "checkout", checkoutDate)
+                .then()
+                .log().all()
+                .statusCode(200);
+    }
+
+    @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Category({AllTests.class, AcceptanceCriticalTests.class})
+    @DisplayName("List Booking IDs filtering by Checkin and Checkout")
+    public void checkListBookingIdsFilteringByCheckinCheckoutAndFirstname(){
+        String checkinDate = "2022-05-20";
+        String checkoutDate = "2022-05-23";
+        String firstname = "Nonewparam";
+        getBookingRequest.listWithThreeFilters("checkin", checkinDate, "checkout", checkoutDate, "firstname", firstname)
+                .then()
+                .log().all()
+                .statusCode(200);
     }
 //--------------------------------- Acceptance Exception Tests -----------------------------
 
