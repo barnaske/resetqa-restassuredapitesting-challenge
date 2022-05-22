@@ -2,6 +2,7 @@ package br.com.restassuredapitesting.tests.booking.tests;
 
 import br.com.restassuredapitesting.base.BaseTest;
 import br.com.restassuredapitesting.suites.AcceptanceCriticalTests;
+import br.com.restassuredapitesting.suites.AcceptanceExceptionTests;
 import br.com.restassuredapitesting.suites.AllTests;
 import br.com.restassuredapitesting.suites.SchemaTests;
 import br.com.restassuredapitesting.tests.booking.request.GetBookingRequest;
@@ -12,13 +13,19 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.junit4.DisplayName;
+import io.restassured.response.Response;
 import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 
 @Feature("List Booking Feature")
@@ -47,7 +54,7 @@ public class GetBookingTest extends BaseTest {
     public void checkListBookingById(){
         JSONObject payload = bookingPayloads.payloadListBookingById();
 
-        int bookingId = postBookingRequest.createBooking(payload)
+        Integer bookingId = postBookingRequest.createBooking(payload)
                 .then()
                 .statusCode(200)
                 .extract()
@@ -64,16 +71,26 @@ public class GetBookingTest extends BaseTest {
     @Category({AllTests.class, AcceptanceCriticalTests.class})
     @DisplayName("List Booking IDs filtering by firstname")
     public void checkListBookingIdsFilteringByFisrtname(){
-        JSONObject payload = bookingPayloads.payloadValidBooking();
+        List<Integer> extractingIdsToMatch = new ArrayList<>();
 
-        postBookingRequest.createBooking(payload)
-                .then()
-                .statusCode(200);
+        String firstname = "Joana";
 
-        getBookingRequest.listWithOneFilter("firstname", "Joana")
+        Response responseToEvaluate = getBookingRequest.listWithOneFilter("firstname", firstname)
                 .then()
+                .log().all()
                 .statusCode(200)
-                .body("size()", greaterThan(0));
+                .extract()
+                .response();
+
+        extractingIdsToMatch = responseToEvaluate.jsonPath().getList("bookingid");
+        System.out.println(extractingIdsToMatch);
+
+        for (Integer id : extractingIdsToMatch){
+            getBookingRequest.bookingById(id)
+                    .then()
+                    .assertThat()
+                    .body("firstname", equalTo(firstname));
+        }
     }
 
     @Test
@@ -81,16 +98,26 @@ public class GetBookingTest extends BaseTest {
     @Category({AllTests.class, AcceptanceCriticalTests.class})
     @DisplayName("List Booking IDs filtering by Lastname")
     public void checkListBookingIdsFilteringByLastname(){
-        JSONObject payload = bookingPayloads.payloadValidBooking();
+        List<Integer> extractingIdsToMatch = new ArrayList<>();
 
-        postBookingRequest.createBooking(payload)
-                .then()
-                .statusCode(200);
+        String lastname = "Pravariar";
 
-        getBookingRequest.listWithOneFilter("lastname", "Pravariar")
+        Response responseToEvaluate = getBookingRequest.listWithOneFilter("lastname", lastname)
                 .then()
+                .log().all()
                 .statusCode(200)
-                .body("size()", greaterThan(0));
+                .extract()
+                .response();
+
+        extractingIdsToMatch = responseToEvaluate.jsonPath().getList("bookingid");
+        System.out.println(extractingIdsToMatch);
+
+        for (Integer id : extractingIdsToMatch){
+            getBookingRequest.bookingById(id)
+                    .then()
+                    .assertThat()
+                    .body("firstname", equalTo(lastname));
+        }
     }
 
     @Test
@@ -109,8 +136,24 @@ public class GetBookingTest extends BaseTest {
                 .then()
                 .log().all()
                 .statusCode(200)
+                .body("bookingdates.checkin", equalTo("2022-05-20"));
+    }
+//--------------------------------- Acceptance Exception Tests -----------------------------
+
+    @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Category({AllTests.class, AcceptanceExceptionTests.class})
+    @DisplayName("Trying to get bookings with bad formatted filter")
+    public void tryingToGetBookingsWithBadFiltering(){
+        List<Integer> extractingIdsToMatch = new ArrayList<>();
+
+        getBookingRequest.listWithOneFilter("that_bad_filter_for_sure", "")
+                .then()
+                .log().all()
+                .statusCode(200)
                 .body("size()", greaterThan(0));
     }
+
 //--------------------------------- Schema Validations -------------------------------------
     @Test
     @Severity(SeverityLevel.BLOCKER)
@@ -130,7 +173,7 @@ public class GetBookingTest extends BaseTest {
     public void validateListBookingByIdSchema(){
         JSONObject payload = bookingPayloads.payloadCreatingBookingToValidateSchema();
 
-        int bookingId = postBookingRequest.createBooking(payload)
+        Integer bookingId = postBookingRequest.createBooking(payload)
                         .then()
                         .statusCode(200)
                         .extract()

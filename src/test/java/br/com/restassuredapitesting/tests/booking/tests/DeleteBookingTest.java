@@ -2,6 +2,7 @@ package br.com.restassuredapitesting.tests.booking.tests;
 
 import br.com.restassuredapitesting.base.BaseTest;
 import br.com.restassuredapitesting.suites.AcceptanceCriticalTests;
+import br.com.restassuredapitesting.suites.AcceptanceExceptionTests;
 import br.com.restassuredapitesting.suites.AllTests;
 import br.com.restassuredapitesting.tests.auth.request.PostAuthRequest;
 import br.com.restassuredapitesting.tests.booking.request.DeleteBookingRequest;
@@ -41,5 +42,19 @@ public class DeleteBookingTest extends BaseTest {
         deleteBookingRequest.deleteBooking(bookingToDeleteId, token)
                 .then()
                 .statusCode(201);
+    }
+
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Category({AllTests.class, AcceptanceExceptionTests.class})
+    @DisplayName("Deleting a non existing booking")
+    public void deleteNonExistingBooking(){
+        int randomId = 1000000 + (int) (Math.random()*9000001);
+
+        String token = postAuthRequest.getToken();
+
+        deleteBookingRequest.deleteBooking(randomId, token)
+                .then()
+                .statusCode(405);
     }
 }

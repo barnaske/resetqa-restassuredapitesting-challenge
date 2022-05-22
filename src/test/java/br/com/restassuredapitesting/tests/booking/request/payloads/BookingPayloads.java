@@ -1,14 +1,16 @@
 package br.com.restassuredapitesting.tests.booking.request.payloads;
 
+import com.github.javafaker.Faker;
 import org.json.JSONObject;
 
 public class BookingPayloads {
 
     public static JSONObject payloadValidBooking(){
+        Faker faker = new Faker();
         JSONObject payloadValidBooking = new JSONObject();
-        payloadValidBooking.put("firstname", "Joana");
-        payloadValidBooking.put("lastname","Pravariar");
-        payloadValidBooking.put("totalprice",111);
+        payloadValidBooking.put("firstname", faker.name().firstName());
+        payloadValidBooking.put("lastname",faker.name().lastName());
+        payloadValidBooking.put("totalprice",faker.number().numberBetween(1,500));
         payloadValidBooking.put("depositpaid", true);
         JSONObject objectBookingDates = new JSONObject();
         objectBookingDates.put("checkin", "2018-01-01");
@@ -72,5 +74,36 @@ public class BookingPayloads {
         payloadUpdateBookingData.put("bookingdates", objectBookingDates);
         payloadUpdateBookingData.put("additionalneeds","Data from the booking");
         return payloadUpdateBookingData;
+    }
+
+    public static JSONObject invalidPayload(){
+        Faker faker = new Faker();
+        JSONObject invalidPayload = new JSONObject();
+        invalidPayload.put("invaliding", faker.name().firstName());
+        invalidPayload.put("the","Pravariar");
+        invalidPayload.put("entire",111);
+        invalidPayload.put("payload", true);
+        JSONObject objectBookingDates = new JSONObject();
+        objectBookingDates.put("checkin", "2018-01-01");
+        objectBookingDates.put("checkout", "2019-01-01");
+        invalidPayload.put("bookingdates", objectBookingDates);
+        invalidPayload.put("additionalneeds","Breakfast");
+        return invalidPayload;
+    }
+
+    public static JSONObject payloadWithNewParam(){
+
+        JSONObject payloadWithNewParam = new JSONObject();
+        payloadWithNewParam.put("firstname", "Nonewpar");
+        payloadWithNewParam.put("lastname","Pravariar");
+        payloadWithNewParam.put("totalprice",111);
+        payloadWithNewParam.put("depositpaid", true);
+        JSONObject objectBookingDates = new JSONObject();
+        objectBookingDates.put("checkin", "2018-01-01");
+        objectBookingDates.put("checkout", "2019-01-01");
+        payloadWithNewParam.put("bookingdates", objectBookingDates);
+        payloadWithNewParam.put("additionalneeds","Breakfast");
+        payloadWithNewParam.put("paramnew", "new");
+        return payloadWithNewParam;
     }
 }

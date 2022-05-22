@@ -35,7 +35,6 @@ public class PutBookingTest extends BaseTest {
 
         int updatingThisBookingById = postBookingRequest.createBooking(payload)
                 .then()
-                .log().all()
                 .statusCode(200)
                 .extract()
                 .path("bookingid");
@@ -44,7 +43,6 @@ public class PutBookingTest extends BaseTest {
 
         putBookingRequest.updateBookingWithToken(updatingThisBookingById, token)
                 .then()
-                .log().all()
                 .statusCode(200)
                 .body("size()", greaterThan(0));
     }
@@ -58,14 +56,12 @@ public class PutBookingTest extends BaseTest {
 
         int updatingThisBookingById = postBookingRequest.createBooking(payload)
                 .then()
-                .log().all()
                 .statusCode(200)
                 .extract()
                 .path("bookingid");
 
         putBookingRequest.updateBookingWithBasicAuth(updatingThisBookingById)
                 .then()
-                .log().all()
                 .statusCode(200)
                 .body("size()", greaterThan(0));
     }

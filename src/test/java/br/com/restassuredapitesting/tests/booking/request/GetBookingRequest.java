@@ -3,6 +3,8 @@ package br.com.restassuredapitesting.tests.booking.request;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
 
 public class GetBookingRequest {
@@ -15,10 +17,18 @@ public class GetBookingRequest {
     }
 
     @Step("List specific booking by ID")
-    public Response bookingById(int id){
+    public Response bookingById(Integer id){
         return given()
                 .when()
                 .get("booking/"+id);
+    }
+
+    //Tentativa
+    @Step("List of IDS that match a filter")
+    public Response bookingsByIdsMatchingFilter(List ids){
+        return given()
+                .when()
+                .get("booking/"+ids);
     }
 
     @Step("List with one filter")

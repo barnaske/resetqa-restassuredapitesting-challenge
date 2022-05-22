@@ -99,6 +99,11 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>3.0.0-M5</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
