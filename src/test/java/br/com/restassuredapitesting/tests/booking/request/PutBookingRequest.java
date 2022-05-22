@@ -11,7 +11,7 @@ public class PutBookingRequest {
 
     BookingPayloads bookingPayloads = new BookingPayloads();
 
-    @Step("Update an specific booking with a token")
+    @Step("Update an specific booking with a token | Atualizar reserva especifica com um token")
     public Response updateBookingWithToken(int id, String token){
         return given()
                 .header("Content-Type", "application/json")
@@ -22,7 +22,7 @@ public class PutBookingRequest {
                 .put("booking/"+ id);
     }
 
-    @Step("Update an specific booking with basic auth")
+    @Step("Update an specific booking with basic auth | Atualizar reserva especifica com basic authentication")
     public Response updateBookingWithBasicAuth(int id){
         return given()
                 .header("Content-Type", "application/json")
@@ -33,6 +33,7 @@ public class PutBookingRequest {
                 .put("booking/"+id);
     }
 
+    @Step("Update booking without auth | Atualizar reserva sem autenticação")
     public Response updateBookingWithoutToken(int id){
         return given()
                 .header("Content-Type", "application/json")

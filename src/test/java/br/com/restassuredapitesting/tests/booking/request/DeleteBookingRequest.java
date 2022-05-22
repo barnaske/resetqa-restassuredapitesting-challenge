@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 
 public class DeleteBookingRequest {
 
-    @Step("Deleting a booking")
+    @Step("Deleting a booking | Excluir uma reserva")
     public Response deleteBooking(int id,String token){
         return given()
                 .header("Content-Type","application/json")
@@ -16,7 +16,7 @@ public class DeleteBookingRequest {
                 .delete("booking/"+id);
     }
 
-    @Step("Deleting a booking without auth")
+    @Step("Deleting a booking without auth | Excluir uma reserva sem autenticação")
     public Response deleteBookingWithoutAuth(int id){
         return given()
                 .header("Content-Type","application/json")

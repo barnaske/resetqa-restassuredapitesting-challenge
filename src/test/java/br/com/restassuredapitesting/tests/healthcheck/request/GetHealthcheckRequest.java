@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 
 public class GetHealthcheckRequest {
 
-    @Step("Return API's ping")
+    @Step("Return API's ping | Retorna o ping da API")
     public Response pingReturnApi(){
         return given()
                 .header("Content-Type", "appplication/json")

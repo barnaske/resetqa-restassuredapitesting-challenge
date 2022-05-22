@@ -17,7 +17,7 @@ import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-@Feature("Delete Bookings Feature")
+@Feature("Delete Bookings Feature | Funcionalidade de Deleção de Reservas")
 public class DeleteBookingTest extends BaseTest {
 
     PostBookingRequest postBookingRequest = new PostBookingRequest();
@@ -28,7 +28,7 @@ public class DeleteBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @Category({AcceptanceCriticalTests.class, AllTests.class})
-    @DisplayName("Deleting a specific booking by ID")
+    @DisplayName("Deleting a specific booking by ID | Deletando uma reserva especifica por ID")
     public void deleteBooking(){
         JSONObject payload = bookingPayloads.payloadValidBooking();
 
@@ -48,7 +48,7 @@ public class DeleteBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class, AcceptanceExceptionTests.class})
-    @DisplayName("Deleting a non existing booking")
+    @DisplayName("Deleting a non existing booking | Deletando uma reserva não existente")
     public void deleteNonExistingBooking(){
         int randomId = 1000000 + (int) (Math.random()*9000001);
 
@@ -62,7 +62,7 @@ public class DeleteBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class, SecurityTests.class})
-    @DisplayName("Deleting a booking without auth")
+    @DisplayName("Deleting a booking without auth | Deletando uma reserva sem autenticação")
     public void deleteBookingWithoutAuth(){
         JSONObject payload = bookingPayloads.payloadValidBooking();
 

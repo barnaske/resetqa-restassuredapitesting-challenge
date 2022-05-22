@@ -20,7 +20,7 @@ import org.junit.experimental.categories.Category;
 
 import static org.hamcrest.Matchers.greaterThan;
 
-@Feature("Update Bookings Feature")
+@Feature("Update Bookings Feature | Funcionalidade de Atualização de Reservas")
 public class PutBookingTest extends BaseTest {
     BookingPayloads bookingPayloads = new BookingPayloads();
     PutBookingRequest putBookingRequest = new PutBookingRequest();
@@ -31,7 +31,7 @@ public class PutBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AcceptanceCriticalTests.class, AllTests.class})
-    @DisplayName("Update a specific booking with a token")
+    @DisplayName("Update a specific booking with a token | Atualizar uma reserva espeicifca com um token")
     public void checkUpdateBookingWithToken(){
         JSONObject payload = bookingPayloads.payloadValidBooking();
 
@@ -52,7 +52,7 @@ public class PutBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AcceptanceCriticalTests.class, AllTests.class})
-    @DisplayName("Update a specific booking with basic auth")
+    @DisplayName("Update a specific booking with basic auth | Atualizar uma reserva espeicifca com basic authentication")
     public void checkUpdateBookingWithBasicAuth(){
         JSONObject payload = bookingPayloads.payloadValidBooking();
 
@@ -71,7 +71,7 @@ public class PutBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AcceptanceExceptionTests.class, AllTests.class})
-    @DisplayName("Update a booking that does not exists")
+    @DisplayName("Update a booking that does not exists | Atualizar uma reserva que não existe")
     public void updateNonExistingBooking(){
 
         int randomId = 1000000 + (int) (Math.random()*9000001);
@@ -87,7 +87,7 @@ public class PutBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({SecurityTests.class, AllTests.class})
-    @DisplayName("Update booking without sending token")
+    @DisplayName("Update booking without sending token | Atualizar reserva sem mandar o token como header")
     public void updateBookingWithoutToken(){
 
         JSONObject payload = bookingPayloads.payloadValidBooking();
@@ -106,7 +106,7 @@ public class PutBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({SecurityTests.class, AllTests.class})
-    @DisplayName("Update booking sending an invalid token")
+    @DisplayName("Update booking sending an invalid token | Atualizar reserva mandando um token inválido")
     public void updateBookingWithInvalidToken(){
 
         JSONObject payload = bookingPayloads.payloadValidBooking();

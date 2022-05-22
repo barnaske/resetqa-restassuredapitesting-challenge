@@ -13,7 +13,7 @@ import org.junit.experimental.categories.Category;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 
-@Feature("Authentication Feature")
+@Feature("Authentication Feature | Funcionalidade de Autenticação")
 public class PostAuthTest extends BaseTest {
 
     PostAuthRequest postAuthRequest = new PostAuthRequest();
@@ -21,7 +21,7 @@ public class PostAuthTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, SmokeTests.class})
-    @DisplayName("Return user token")
+    @DisplayName("Return user token | Retorna o token de usuário")
     public void checkUserTokenReturn(){
         postAuthRequest.returnToken()
                 .then()

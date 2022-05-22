@@ -11,7 +11,7 @@ public class PostBookingRequest {
 
     BookingPayloads bookingPayloads = new BookingPayloads();
 
-    @Step("Create a new booking")
+    @Step("Create a new booking | Criar uma nova reserva")
     public Response createBooking(JSONObject payload){
         return given()
                 .header("Content-Type", "application/json")

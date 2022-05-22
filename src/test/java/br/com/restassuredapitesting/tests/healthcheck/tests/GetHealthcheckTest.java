@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.Matchers.lessThan;
 
-@Feature("Healthcheck Feature")
+@Feature("Healthcheck Feature | Funcionalidade de Healthcheck")
 public class GetHealthcheckTest extends BaseTest {
 
     GetHealthcheckRequest getPingRequest = new GetHealthcheckRequest();
@@ -23,7 +23,7 @@ public class GetHealthcheckTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, HealthcheckTests.class})
-    @DisplayName("Check if the api is online")
+    @DisplayName("Check if the api is online | Verifica se a API está online")
     public void healthCheck() {
         getPingRequest.pingReturnApi()
                 .then()
@@ -33,7 +33,7 @@ public class GetHealthcheckTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, HealthcheckTests.class})
-    @DisplayName("Check if the api is online - max 3ms")
+    @DisplayName("Check if the api is online - max 3ms | Verifica se a API está online e respondendo em no máximo 3ms")
     public void healthCheckWithinThreeSeconds(){
         getPingRequest.pingReturnApi()
                 .then()

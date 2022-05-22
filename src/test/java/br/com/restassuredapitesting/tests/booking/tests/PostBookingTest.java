@@ -21,7 +21,7 @@ import org.junit.experimental.categories.Category;
 import static com.google.inject.matcher.Matchers.not;
 import static org.hamcrest.Matchers.*;
 
-@Feature("Booking - Create Booking")
+@Feature("Booking - Create Booking | Funcionalidade de Criação de Reservas")
 public class PostBookingTest extends BaseTest {
 
     PostBookingRequest postBookingRequest = new PostBookingRequest();
@@ -31,7 +31,7 @@ public class PostBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class, SchemaTests.class, AcceptanceCriticalTests.class})
-    @DisplayName("Creating a new booking")
+    @DisplayName("Creating a new booking | Criar nova reserva")
     public void createBooking(){
 
         JSONObject payload = bookingPayloads.payloadValidBooking();
@@ -44,7 +44,7 @@ public class PostBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @Category({AllTests.class, SchemaTests.class, AcceptanceExceptionTests.class})
-    @DisplayName("Creating a new booking with invalid payload")
+    @DisplayName("Creating a new booking with invalid payload | Criando uma nova reserva com uma payload inválida")
     public void createBookingWithInvalidPayload(){
 
         JSONObject payload = bookingPayloads.invalidPayload();
@@ -57,7 +57,7 @@ public class PostBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class, SchemaTests.class, AcceptanceExceptionTests.class})
-    @DisplayName("Creating 5 new bookings in a row")
+    @DisplayName("Creating 5 new bookings in a row | Criando 5 reservas seguidas")
     public void createFiveBookingInARow(){
         JSONObject payload = bookingPayloads.payloadValidBooking();
 
@@ -72,7 +72,7 @@ public class PostBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class, SchemaTests.class, AcceptanceExceptionTests.class})
-    @DisplayName("Create booking with more params in the payload then expected")
+    @DisplayName("Create booking with more params in the payload then expected | Criando uma reserva com mais parametros na payload do que o previsto")
     public void createBookingWithMoreParamsInPayload(){
         JSONObject payload = bookingPayloads.payloadWithNewParam();
 
