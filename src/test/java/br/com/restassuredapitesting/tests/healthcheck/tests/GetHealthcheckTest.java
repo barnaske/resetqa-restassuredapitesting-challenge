@@ -2,6 +2,7 @@ package br.com.restassuredapitesting.tests.healthcheck.tests;
 
 import br.com.restassuredapitesting.base.BaseTest;
 import br.com.restassuredapitesting.suites.AllTests;
+import br.com.restassuredapitesting.suites.HealthcheckTests;
 import br.com.restassuredapitesting.tests.healthcheck.request.GetHealthcheckRequest;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -21,7 +22,7 @@ public class GetHealthcheckTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @Category({AllTests.class})
+    @Category({AllTests.class, HealthcheckTests.class})
     @DisplayName("Check if the api is online")
     public void healthCheck() {
         getPingRequest.pingReturnApi()
@@ -31,7 +32,7 @@ public class GetHealthcheckTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @Category({AllTests.class})
+    @Category({AllTests.class, HealthcheckTests.class})
     @DisplayName("Check if the api is online - max 3ms")
     public void healthCheckWithinThreeSeconds(){
         getPingRequest.pingReturnApi()

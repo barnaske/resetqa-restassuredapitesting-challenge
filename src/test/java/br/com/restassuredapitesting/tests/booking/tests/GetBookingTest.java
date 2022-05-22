@@ -116,7 +116,7 @@ public class GetBookingTest extends BaseTest {
             getBookingRequest.bookingById(id)
                     .then()
                     .assertThat()
-                    .body("firstname", equalTo(lastname));
+                    .body("lastname", equalTo(lastname));
         }
     }
 
@@ -160,7 +160,7 @@ public class GetBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @Category({AllTests.class, AcceptanceCriticalTests.class})
-    @DisplayName("List Booking IDs filtering by Checkin and Checkout")
+    @DisplayName("List Booking IDs filtering by Checkin and Checkout and Firstname")
     public void checkListBookingIdsFilteringByCheckinCheckoutAndFirstname(){
         String checkinDate = "2022-05-20";
         String checkoutDate = "2022-05-23";

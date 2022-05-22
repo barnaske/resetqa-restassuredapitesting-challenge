@@ -4,6 +4,7 @@ import br.com.restassuredapitesting.base.BaseTest;
 import br.com.restassuredapitesting.suites.AcceptanceCriticalTests;
 import br.com.restassuredapitesting.suites.AcceptanceExceptionTests;
 import br.com.restassuredapitesting.suites.AllTests;
+import br.com.restassuredapitesting.suites.SecurityTests;
 import br.com.restassuredapitesting.tests.auth.request.PostAuthRequest;
 import br.com.restassuredapitesting.tests.booking.request.DeleteBookingRequest;
 import br.com.restassuredapitesting.tests.booking.request.PostBookingRequest;
@@ -60,7 +61,7 @@ public class DeleteBookingTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Category({AllTests.class, AcceptanceExceptionTests.class})
+    @Category({AllTests.class, SecurityTests.class})
     @DisplayName("Deleting a booking without auth")
     public void deleteBookingWithoutAuth(){
         JSONObject payload = bookingPayloads.payloadValidBooking();

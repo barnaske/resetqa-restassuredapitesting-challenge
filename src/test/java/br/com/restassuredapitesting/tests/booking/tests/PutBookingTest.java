@@ -2,6 +2,7 @@ package br.com.restassuredapitesting.tests.booking.tests;
 
 import br.com.restassuredapitesting.base.BaseTest;
 import br.com.restassuredapitesting.suites.AcceptanceCriticalTests;
+import br.com.restassuredapitesting.suites.AcceptanceExceptionTests;
 import br.com.restassuredapitesting.suites.AllTests;
 import br.com.restassuredapitesting.suites.SecurityTests;
 import br.com.restassuredapitesting.tests.auth.request.PostAuthRequest;
@@ -51,7 +52,7 @@ public class PutBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AcceptanceCriticalTests.class, AllTests.class})
-    @DisplayName("Update a specific booking with a token")
+    @DisplayName("Update a specific booking with basic auth")
     public void checkUpdateBookingWithBasicAuth(){
         JSONObject payload = bookingPayloads.payloadValidBooking();
 
@@ -69,7 +70,7 @@ public class PutBookingTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Category({AcceptanceCriticalTests.class, AllTests.class})
+    @Category({AcceptanceExceptionTests.class, AllTests.class})
     @DisplayName("Update a booking that does not exists")
     public void updateNonExistingBooking(){
 

@@ -2,6 +2,7 @@ package br.com.restassuredapitesting.tests.booking.tests;
 
 import br.com.restassuredapitesting.base.BaseTest;
 import br.com.restassuredapitesting.suites.AcceptanceCriticalTests;
+import br.com.restassuredapitesting.suites.AcceptanceExceptionTests;
 import br.com.restassuredapitesting.suites.AllTests;
 import br.com.restassuredapitesting.suites.SchemaTests;
 import br.com.restassuredapitesting.tests.booking.request.PostBookingRequest;
@@ -42,7 +43,7 @@ public class PostBookingTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @Category({AllTests.class, SchemaTests.class, AcceptanceCriticalTests.class})
+    @Category({AllTests.class, SchemaTests.class, AcceptanceExceptionTests.class})
     @DisplayName("Creating a new booking with invalid payload")
     public void createBookingWithInvalidPayload(){
 
@@ -55,7 +56,7 @@ public class PostBookingTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Category({AllTests.class, SchemaTests.class, AcceptanceCriticalTests.class})
+    @Category({AllTests.class, SchemaTests.class, AcceptanceExceptionTests.class})
     @DisplayName("Creating 5 new bookings in a row")
     public void createFiveBookingInARow(){
         JSONObject payload = bookingPayloads.payloadValidBooking();
@@ -70,7 +71,7 @@ public class PostBookingTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Category({AllTests.class, SchemaTests.class, AcceptanceCriticalTests.class})
+    @Category({AllTests.class, SchemaTests.class, AcceptanceExceptionTests.class})
     @DisplayName("Create booking with more params in the payload then expected")
     public void createBookingWithMoreParamsInPayload(){
         JSONObject payload = bookingPayloads.payloadWithNewParam();

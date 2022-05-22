@@ -1,5 +1,6 @@
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\base\BaseTest.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\tests\booking\request\PutBookingRequest.java
+C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\suites\AcceptanceExceptionTests.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\tests\auth\request\PostAuthRequest.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\runners\AllTests.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\tests\auth\request\payloads\AuthPayloads.java
@@ -11,6 +12,7 @@ C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\r
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\utils\Utils.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\suites\SecurityTests.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\tests\booking\request\PostBookingRequest.java
+C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\runners\HealthcheckTests.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\tests\healthcheck\tests\GetHealthcheckTest.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\tests\booking\request\payloads\BookingPayloads.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\tests\booking\request\GetBookingRequest.java
@@ -18,8 +20,11 @@ C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\r
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\tests\healthcheck\request\GetHealthcheckRequest.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\runners\SmokeTests.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\tests\booking\tests\GetBookingTest.java
+C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\runners\AcceptanceExceptionTests.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\tests\booking\tests\PutBookingTest.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\runners\SchemaTests.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\runners\AcceptanceCriticalTests.java
+C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\tests\booking\tests\DeleteBookingTest.java
+C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\suites\HealthcheckTests.java
 C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\suites\SmokeTests.java
-C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\suites\Healthcheck.java
+C:\Users\User\Desktop\Programação\RestAssuredApiTesting\src\test\java\br\com\restassuredapitesting\tests\booking\request\DeleteBookingRequest.java
