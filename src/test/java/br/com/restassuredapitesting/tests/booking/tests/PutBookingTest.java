@@ -80,7 +80,6 @@ public class PutBookingTest extends BaseTest {
 
         putBookingRequest.updateBookingWithToken(randomId, token)
                 .then()
-                .log().all()
                 .statusCode(405);
     }
 
@@ -121,7 +120,6 @@ public class PutBookingTest extends BaseTest {
 
         putBookingRequest.updateBookingWithToken(updatingThisBookingById, token)
                 .then()
-                .log().all()
                 .statusCode(403);
     }
 }

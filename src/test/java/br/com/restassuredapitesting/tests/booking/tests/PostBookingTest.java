@@ -64,7 +64,6 @@ public class PostBookingTest extends BaseTest {
         for (int i = 0; i < 6; i++){
             postBookingRequest.createBooking(payload)
                     .then()
-                    .log().all()
                     .statusCode(200);
         }
     }
@@ -78,10 +77,8 @@ public class PostBookingTest extends BaseTest {
 
             postBookingRequest.createBooking(payload)
                     .then()
-                    .log().all()
                     .statusCode(200)
                     .assertThat()
                     .body("paramnew", nullValue());
-
     }
 }

@@ -77,13 +77,11 @@ public class GetBookingTest extends BaseTest {
 
         Response responseToEvaluate = getBookingRequest.listWithOneFilter("firstname", firstname)
                 .then()
-                .log().all()
                 .statusCode(200)
                 .extract()
                 .response();
 
         extractingIdsToMatch = responseToEvaluate.jsonPath().getList("bookingid");
-        System.out.println(extractingIdsToMatch);
 
         for (Integer id : extractingIdsToMatch){
             getBookingRequest.bookingById(id)
@@ -104,13 +102,11 @@ public class GetBookingTest extends BaseTest {
 
         Response responseToEvaluate = getBookingRequest.listWithOneFilter("lastname", lastname)
                 .then()
-                .log().all()
                 .statusCode(200)
                 .extract()
                 .response();
 
         extractingIdsToMatch = responseToEvaluate.jsonPath().getList("bookingid");
-        System.out.println(extractingIdsToMatch);
 
         for (Integer id : extractingIdsToMatch){
             getBookingRequest.bookingById(id)
@@ -128,7 +124,6 @@ public class GetBookingTest extends BaseTest {
         String checkinDate = "2022-05-20";
         getBookingRequest.listWithOneFilter("checkin", checkinDate)
                 .then()
-                .log().all()
                 .statusCode(200);
     }
 
@@ -140,7 +135,6 @@ public class GetBookingTest extends BaseTest {
         String checkoutDate = "2022-05-22";
         getBookingRequest.listWithOneFilter("checkin", checkoutDate)
                 .then()
-                .log().all()
                 .statusCode(200);
     }
 
@@ -153,7 +147,6 @@ public class GetBookingTest extends BaseTest {
         String checkoutDate = "2022-05-22";
         getBookingRequest.listWithTwoFilters("checkin", checkinDate, "checkout", checkoutDate)
                 .then()
-                .log().all()
                 .statusCode(200);
     }
 
@@ -167,7 +160,6 @@ public class GetBookingTest extends BaseTest {
         String firstname = "Nonewparam";
         getBookingRequest.listWithThreeFilters("checkin", checkinDate, "checkout", checkoutDate, "firstname", firstname)
                 .then()
-                .log().all()
                 .statusCode(200);
     }
 //--------------------------------- Acceptance Exception Tests -----------------------------
@@ -181,7 +173,6 @@ public class GetBookingTest extends BaseTest {
 
         getBookingRequest.listWithOneFilter("that_bad_filter_for_sure", "")
                 .then()
-                .log().all()
                 .statusCode(200)
                 .body("size()", greaterThan(0));
     }
